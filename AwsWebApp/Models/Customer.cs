@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace AwsWebApp.Models
 {
@@ -14,10 +10,16 @@ namespace AwsWebApp.Models
         [Column("id_customer")]
         public int id { get; set; }
 
-        public string customer { get; set; }
+        [MaxLength(100)]
+        [Column("name")]
+        public string Name { get; set; }
 
-        public string nit { get; set; }
+        [MaxLength(50)]
+        [Column("nit")]
+        public string Nit { get; set; }
 
-        public string address { get; set; }
+        [MaxLength(150)]
+        [Column("address")]
+        public string Address { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Common;
 using System.Linq;
 using System.Web;
 using Npgsql;
@@ -9,7 +10,7 @@ namespace AwsWebApp.Models
 {
     public class Helpers
     {
-        public static string GetRdsConnectionString()
+        public static DbConnection CreateConnection()
         {
 #if !DEBUG
             var appConfig = ConfigurationManager.AppSettings;
@@ -27,10 +28,12 @@ namespace AwsWebApp.Models
                 Password = appConfig["RDS_PASSWORD"]
             };
 
-            return builder.ToString();
+            var cstr = builder.ToString();
+#else
+            var cstr = "Host=localhost;DataBase=awsTest;User ID=postgres;Password=123456;";
 #endif
 
-            return "Data Source=localhost;Initial Catalog=awsTest;User ID=postgrres;Password=123456;";
+            return new NpgsqlConnection(cstr);
         }
     }
 }

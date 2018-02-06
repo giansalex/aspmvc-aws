@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using AwsWebApp.Models;
 
@@ -29,15 +30,26 @@ namespace AwsWebApp.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(customer);
+            }
+
             await _repository.Add(customer);
 
             return RedirectToAction("Index");
         }
 
+        /// <exclude />
         [HttpGet]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int? id)
         {
-            var item = await _repository.Get(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var item = await _repository.Get(id.Value);
             if (item == null)
             {
                 return HttpNotFound();
@@ -46,8 +58,8 @@ namespace AwsWebApp.Controllers
             return View(item);
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Delete(int id, Customer customer)
+        [HttpPost, ActionName("Delete")]
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             await _repository.Remove(id);
 
