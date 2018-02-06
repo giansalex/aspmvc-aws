@@ -12,12 +12,15 @@ namespace AwsWebApp.Models
     {
         public static DbConnection CreateConnection()
         {
-#if !DEBUG
             var appConfig = ConfigurationManager.AppSettings;
 
             string dbname = appConfig["RDS_DB_NAME"];
 
-            if (string.IsNullOrEmpty(dbname)) return null;
+            if (string.IsNullOrEmpty(dbname))
+            {
+                var cstr =ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+                return new NpgsqlConnection(cstr);
+            }
 
             var builder = new NpgsqlConnectionStringBuilder
             {
@@ -28,12 +31,8 @@ namespace AwsWebApp.Models
                 Password = appConfig["RDS_PASSWORD"]
             };
 
-            var cstr = builder.ToString();
-#else
-            var cstr = "Host=localhost;DataBase=awsTest;User ID=postgres;Password=123456;";
-#endif
 
-            return new NpgsqlConnection(cstr);
+            return new NpgsqlConnection(builder.ToString());
         }
     }
 }
