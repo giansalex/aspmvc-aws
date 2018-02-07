@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace AwsWebApp
 {
@@ -20,6 +19,7 @@ namespace AwsWebApp
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/popper.js",
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
