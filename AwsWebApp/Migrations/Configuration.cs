@@ -9,8 +9,8 @@ namespace AwsWebApp.Migrations
     {
         public Configuration()
         {
+            AutomaticMigrationDataLossAllowed = true;
             AutomaticMigrationsEnabled = true;
-            ContextKey = "AwsWebApp.Models.ApplicationDbContext";
         }
 
         protected override void Seed(AwsWebApp.Models.ApplicationDbContext context)

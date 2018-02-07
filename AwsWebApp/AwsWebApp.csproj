@@ -171,9 +171,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802062223388_InitialCreate.cs" />
-    <Compile Include="Migrations\201802062223388_InitialCreate.Designer.cs">
-      <DependentUpon>201802062223388_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201802071759590_AddDb.cs" />
+    <Compile Include="Migrations\201802071759590_AddDb.Designer.cs">
+      <DependentUpon>201802071759590_AddDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -282,8 +282,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802062223388_InitialCreate.resx">
-      <DependentUpon>201802062223388_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802071759590_AddDb.resx">
+      <DependentUpon>201802071759590_AddDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

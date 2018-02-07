@@ -7,13 +7,13 @@ namespace AwsWebApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class AddDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802062223388_InitialCreate"; }
+            get { return "201802071759590_AddDb"; }
         }
         
         string IMigrationMetadata.Source

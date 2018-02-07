@@ -3,7 +3,7 @@ namespace AwsWebApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class AddDb : DbMigration
     {
         public override void Up()
         {
