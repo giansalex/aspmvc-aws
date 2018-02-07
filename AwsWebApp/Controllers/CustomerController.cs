@@ -28,6 +28,7 @@ namespace AwsWebApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Customer customer)
         {
             if (!ModelState.IsValid)
@@ -59,6 +60,7 @@ namespace AwsWebApp.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             await _repository.Remove(id);
